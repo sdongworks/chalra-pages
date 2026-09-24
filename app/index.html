@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>찰라 — 불교 말씀 카드</title>
+  <meta name="description" content="불교 말씀을 카드로 간직하고 나누는 앱. 음력·재일 달력 위젯과 함께.">
+  <meta property="og:title" content="찰라 — 불교 말씀 카드">
+  <meta property="og:description" content="불교 말씀을 카드로 간직하고 나누는 앱. 음력·재일 달력 위젯과 함께.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #241A12;
+      color: rgba(243,237,228,0.9);
+      font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .title { font-size: 30px; color: #F3EDE4; letter-spacing: 0.04em; }
+    .han { font-size: 15px; color: rgba(243,237,228,0.4); margin-top: 6px; }
+    .sub { font-size: 14px; color: #C99B5E; margin-top: 18px; line-height: 1.8; }
+    a {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 13px 30px;
+      border-radius: 999px;
+      background: #C99B5E;
+      color: #241A12;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .note { font-size: 12px; color: rgba(243,237,228,0.35); margin-top: 22px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="title">찰라</div>
+    <div class="han">刹那</div>
+    <div class="sub">불교 말씀을 카드로 간직하고 나누세요<br>음력 · 불기 · 재일 달력 위젯과 함께</div>
+    <a id="go" href="https://play.google.com/store/apps/details?id=com.sdongworks.chalra">Google Play에서 받기</a>
+    <div class="note">Android · 무료 · 광고 없음</div>
+  </main>
+
+  <script>
+    // 짧은 주소 하나로 여러 유입 경로를 구분한다. 예: /app?s=kakao
+    // Play Console → 통계 → 획득 보고서에서 트래픽 소스로 나뉘어 보인다.
+    (function () {
+      var source = new URLSearchParams(location.search).get('s') || 'profile';
+      if (!/^[a-z0-9_-]{1,32}$/i.test(source)) source = 'profile';
+
+      var referrer = encodeURIComponent(
+        'utm_source=' + source + '&utm_medium=link&utm_campaign=chalra'
+      );
+      var url = 'https://play.google.com/store/apps/details' +
+                '?id=com.sdongworks.chalra&referrer=' + referrer;
+
+      document.getElementById('go').href = url;
+      // 사람이 버튼을 누르기 전에 바로 보낸다. 자바스크립트가 막혀 있어도 버튼이 남는다.
+      location.replace(url);
+    })();
+  </script>
+</body>
+</html>
